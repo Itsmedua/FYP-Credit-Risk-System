@@ -147,24 +147,21 @@ with st.form("credit_risk_form"):
 if submitted:
 
 
-    if not customer_id.strip():
-        st.error("Please enter a Customer ID.")
-        st.stop()
-    if not 4 <= duration <= 72:
-        st.error(
-            "Loan Duration must be between 4 and 72 months."
-        )
-        st.stop()
-    if credit_amount < 1:
-              st.error("Credit Amount must be greater than 0.")
-              st.stop()
-              st.stop()
-    if credit_amount <=0:
-                  st.error("Credit Amount must be greater than 0.")
-                  st.stop()
+     if not customer_id.strip():
+       st.error("Please enter a Customer ID.")
+       st.stop()
+
+     if not 4 <= duration <= 72:
+       st.error("Loan Duration must be between 4 and 72 months.")
+       st.stop()
+
+     if credit_amount <= 0:
+       st.error("Credit Amount must be greater than 0.")
+       st.stop()
+
     # st.write("DEBUG — Credit Amount:", credit_amount)   
       
-    customer_data = {
+customer_data = {
         "checking_status": checking_status,
         "duration": duration,
         "credit_history": credit_history,
@@ -187,9 +184,9 @@ if submitted:
         "foreign_worker": foreign_worker
     }
 
-    customer_df = pd.DataFrame([customer_data])
+customer_df = pd.DataFrame([customer_data])
 
-    try:
+try:
         # Random forest prediction
         prediction = rf_model.predict(customer_df)[0]
         probabilities = rf_model.predict_proba(customer_df)[0]
@@ -280,5 +277,5 @@ if submitted:
         plt.close(fig)
 
 
-    except Exception as error:
+except Exception as error:
         st.error(f"Prediction or SHAP explanation error: {error}")

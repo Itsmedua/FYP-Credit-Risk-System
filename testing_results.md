@@ -80,3 +80,18 @@ These results describe performance on one test split of the German Credit datase
 - **Status:** PASS
 
 **Note:** This test verifies that prediction and explanation are displayed together. It does not independently prove the mathematical correctness of the SHAP explanation.
+
+
+
+
+
+
+
+### TC-08 — Re-test After Credit Amount Validation Fix
+
+- **Test Input:** Customer ID: CUST007
+- **Loan Duration:** 24 months
+- **Credit Amount:** 5000
+- **Expected Result:** The application should display a prediction, Bad-Credit Model Score, and SHAP explanation without errors.
+- **Actual Result:** Predicted Category: Bad Credit; Estimated Bad-Credit Model Score: 64.00%; SHAP explanation displayed.
+- **Status:** PASS
