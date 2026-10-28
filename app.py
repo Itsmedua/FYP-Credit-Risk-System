@@ -38,6 +38,10 @@ except Exception as error:
     st.stop()
 
 
+# Global Feature Importance
+# Yahan global chart wala poora code hoga
+
+
 # Customer information form
 with st.form("credit_risk_form"):
     st.subheader("Customer Information")
